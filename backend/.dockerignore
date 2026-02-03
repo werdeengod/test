@@ -1,0 +1,36 @@
+# Зависимости
+vendor/
+node_modules/
+
+# Логи приложения
+storage/logs/
+*.log
+
+# Системные файлы
+.git/
+.gitignore
+README.md
+.DS_Store
+.thumbs
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Сборка фронтенда
+public/js/
+public/css/
+mix-manifest.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Тесты
+coverage/
+.phpunit.result.cache
+
+# Документация
+docs/

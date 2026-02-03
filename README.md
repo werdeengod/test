@@ -46,14 +46,16 @@ cd test
 ### **Шаг 2: Настройка переменных окружения**
 
 ```bash
-cp .env.example .env
 # Отредактируйте .env файл при необходимости
+cp .env.example .env
+#или
+copy .env.example .env
 ```
 
-### **Шаг 3: Запустить docker build**
+### **Шаг 3: Запустить приложение и его build**
 
 ```bash
-docker compose build
+docker compose up -d --build
 ```
 
 ### **Шаг 4: Запустить миграции и сидеры**
@@ -62,13 +64,7 @@ docker compose build
 docker compose exec backend php artisan migrate --seed
 ```
 
-### **Шаг 5: Запустить docker приложение**
-
-```bash
-docker compose up -d
-```
-
-### **Шаг 6: Открыть браузер по URL приложения**
+### **Шаг 5: Открыть браузер по URL приложения**
 
 ```bash
 http://localhost:8081/

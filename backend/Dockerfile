@@ -7,7 +7,7 @@ COPY composer.json composer.lock /app/
 
 WORKDIR /app
 
-RUN composer install --no-dev --optimize-autoloader --no-scripts
+RUN composer install --optimize-autoloader --no-scripts
 
 FROM php:8.4-fpm-alpine
 
@@ -29,6 +29,8 @@ COPY fpm-pool.conf /usr/local/etc/php-fpm.d/www.conf
 COPY --from=vendor /app/vendor ./vendor
 
 COPY . .
+
+RUN php artisan key:generate --force
 
 RUN rm -f bootstrap/cache/packages.php
 RUN php artisan package:discover
