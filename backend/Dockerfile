@@ -30,8 +30,6 @@ COPY --from=vendor /app/vendor ./vendor
 
 COPY . .
 
-RUN php artisan key:generate --force
-
 RUN rm -f bootstrap/cache/packages.php
 RUN php artisan package:discover
 
