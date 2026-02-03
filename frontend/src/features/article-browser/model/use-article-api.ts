@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
-import { useApiClient } from '@/shared/api';
 import { getArticleApi } from '@/entities/article';
+import { useApiClient } from '@/shared/api';
 
-export const useArticleApi = () => {
+export function useArticleApi() {
   const client = useApiClient();
   const api = useMemo(() => getArticleApi(client), [client]);
   return api;
-};
+}

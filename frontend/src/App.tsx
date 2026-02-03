@@ -1,7 +1,7 @@
-import { Route, Routes } from 'react-router';
 import { Suspense } from 'react';
-import Articles from './pages/Articles/Articles';
+import { Route, Routes } from 'react-router';
 import Article from './pages/Article/Article';
+import Articles from './pages/Articles/Articles';
 
 function App() {
   return (

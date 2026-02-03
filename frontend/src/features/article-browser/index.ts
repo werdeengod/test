@@ -1,5 +1,5 @@
-export { useArticlesQuery } from './model/use-articles-query';
+export { useArticleApi } from './model/use-article-api';
 
 export { useArticleQuery } from './model/use-article-query';
 
-export { useArticleApi } from './model/use-article-api';
+export { useArticlesQuery } from './model/use-articles-query';

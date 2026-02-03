@@ -1,8 +1,8 @@
 import type { Axios, AxiosResponse } from 'axios';
-import type { ArticleType, ArticleDetailType, CommentType } from './types';
-import type { PaginationType, CreateArticleParams, CreateCommentParams } from '@/shared/api';
+import type { ArticleDetailType, ArticleType, CommentType } from './types';
+import type { CreateArticleParams, CreateCommentParams, PaginationType } from '@/shared/api';
 
-export const getArticleApi = (client: Axios) => {
+export function getArticleApi(client: Axios) {
   return {
     getArticles: async (): Promise<PaginationType<ArticleType>> =>
       client.get('/articles').then((res: AxiosResponse<PaginationType<ArticleType>>) => res.data),
@@ -18,4 +18,4 @@ export const getArticleApi = (client: Axios) => {
         .post(`/articles/${id}/comments`, data)
         .then((res: AxiosResponse<CommentType>) => res.data),
   };
-};
+}

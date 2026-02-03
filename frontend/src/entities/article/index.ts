@@ -1,3 +1,3 @@
 export { getArticleApi } from './model/api';
 
-export type { ArticleType, CommentType, ArticleDetailType } from './model/types';
+export type { ArticleDetailType, ArticleType, CommentType } from './model/types';

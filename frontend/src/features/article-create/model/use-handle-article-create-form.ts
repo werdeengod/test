@@ -1,7 +1,8 @@
-import React, { useState, useCallback } from 'react';
+import type * as React from 'react';
+import { useCallback, useState } from 'react';
 import { useCreateArticleMutation } from './use-create-article-mutation';
 
-export const useHandleArticleCreateForm = () => {
+export function useHandleArticleCreateForm() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
@@ -35,7 +36,7 @@ export const useHandleArticleCreateForm = () => {
       }
 
       createArticleMutation.mutate(
-        { title: title, content: content },
+        { title, content },
         { onSuccess: () => resetForm() },
       );
     },
@@ -53,4 +54,4 @@ export const useHandleArticleCreateForm = () => {
     },
     handleSubmitForm,
   };
-};
+}

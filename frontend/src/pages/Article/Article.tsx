@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import { useParams } from 'react-router';
 import { useArticleQuery } from '@/features/article-browser';
 import { useHandleCommentForm } from '@/features/article-comments';
-import { getDateFromString } from '@/shared/lib/date-formatter';
 import { ArrowLeftIcon } from '@/shared/icons';
+import { getDateFromString } from '@/shared/lib/date-formatter';
 import style from './Article.module.scss';
 
 const Article: React.FC = (): React.ReactNode => {
@@ -22,7 +22,10 @@ const Article: React.FC = (): React.ReactNode => {
           </a>
           <h3>{article.title}</h3>
         </div>
-        <p className="text_grey">Статья вышла в {getDateFromString(article.created_at)}</p>
+        <p className="text_grey">
+          Статья вышла в
+          {getDateFromString(article.created_at)}
+        </p>
         <p className="content">{article.content}</p>
         <div>
           <form onSubmit={handleSubmitForm} className={style.comment__form}>
@@ -55,19 +58,21 @@ const Article: React.FC = (): React.ReactNode => {
           <p className={style.comment__title}>Комментарии</p>
           <div className={style.comment__separator}></div>
           <div className={style.comments}>
-            {article.comments && article.comments.length !== 0 ? (
-              article.comments.map((comment) => (
-                <div className={style.comment}>
-                  <div className={style.comment__header}>
-                    <h4>{comment.author_name}</h4>
-                    <p className="text_grey">{getDateFromString(comment.created_at)}</p>
-                  </div>
-                  <p className="content">{comment.content}</p>
-                </div>
-              ))
-            ) : (
-              <p className="text_grey">Нет комментариев. Добавь первый комментарий!</p>
-            )}
+            {article.comments.length !== 0
+              ? (
+                  article.comments.map(comment => (
+                    <div className={style.comment} key={comment.id}>
+                      <div className={style.comment__header}>
+                        <h4>{comment.author_name}</h4>
+                        <p className="text_grey">{getDateFromString(comment.created_at)}</p>
+                      </div>
+                      <p className="content">{comment.content}</p>
+                    </div>
+                  ))
+                )
+              : (
+                  <p className="text_grey">Нет комментариев. Добавь первый комментарий!</p>
+                )}
           </div>
         </div>
       </div>

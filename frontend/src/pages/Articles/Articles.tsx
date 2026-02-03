@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { useArticlesQuery } from '@/features/article-browser';
 import { useHandleArticleCreateForm } from '@/features/article-create';
 import { getDateFromString } from '@/shared/lib/date-formatter';
@@ -43,17 +43,17 @@ const Articles: React.FC = (): React.ReactNode => {
       <div className={style.articles__block}>
         <h2 className={style.articles__title}>Статьи</h2>
         <div className={style.articles}>
-          {articles.data.map((article) => (
+          {articles.data.map(article => (
             <a href={`/articles/${article.id}`} className={style.article} key={article.id}>
               <div className={style.article__header}>
                 <h3>
-                  {article.title.length >= 47 ? article.title.slice(0, 45) + '...' : article.title}
+                  {article.title.length >= 47 ? `${article.title.slice(0, 45)}...` : article.title}
                 </h3>
                 <p className="text_grey">{getDateFromString(article.created_at)}</p>
               </div>
               <p className="content">
                 {article.content.length >= 83
-                  ? article.content.slice(0, 80) + '...'
+                  ? `${article.content.slice(0, 80)}...`
                   : article.content}
               </p>
             </a>

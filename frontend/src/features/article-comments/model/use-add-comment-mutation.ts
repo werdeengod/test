@@ -1,20 +1,20 @@
-import type { CreateCommentParams } from '@/shared/api';
 import type { ArticleDetailType } from '@/entities/article';
-import { useQueryClient } from '@tanstack/react-query';
+import type { CreateCommentParams } from '@/shared/api';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+
 import { useArticleApi } from '@/features/article-browser';
-import { useMutation } from '@tanstack/react-query';
 
 interface AddCommentMutationContext {
-  previousArticle: ArticleDetailType | undefined;
-  tempId: string;
+  previousArticle: ArticleDetailType | undefined
+  tempId: string
 }
 
-export const useAddCommentMutation = (articleId: number) => {
+export function useAddCommentMutation(articleId: number) {
   const queryClient = useQueryClient();
   const api = useArticleApi();
 
   return useMutation({
-    mutationFn: (data: CreateCommentParams) => api.addComment(articleId, data),
+    mutationFn: async (data: CreateCommentParams) => api.addComment(articleId, data),
     onMutate: async (target: CreateCommentParams) => {
       await queryClient.cancelQueries({ queryKey: ['articles'] });
 
@@ -34,7 +34,7 @@ export const useAddCommentMutation = (articleId: number) => {
 
         return {
           ...old,
-          comments: [...(old.comments || []), optimisticComment],
+          comments: [...old.comments, optimisticComment],
         };
       });
 
@@ -47,4 +47,4 @@ export const useAddCommentMutation = (articleId: number) => {
       }
     },
   });
-};
+}

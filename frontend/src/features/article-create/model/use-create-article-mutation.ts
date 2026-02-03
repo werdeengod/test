@@ -4,16 +4,16 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useArticleApi } from '@/features/article-browser';
 
 interface CreateArticleMutationContext {
-  previosArticles: PaginationType<ArticleType> | undefined;
-  tempId: string;
+  previosArticles: PaginationType<ArticleType> | undefined
+  tempId: string
 }
 
-export const useCreateArticleMutation = () => {
+export function useCreateArticleMutation() {
   const queryClient = useQueryClient();
   const api = useArticleApi();
 
   return useMutation({
-    mutationFn: (data: CreateArticleParams) => api.createArticle(data),
+    mutationFn: async (data: CreateArticleParams) => api.createArticle(data),
     onMutate: async (target: CreateArticleParams): Promise<CreateArticleMutationContext> => {
       await queryClient.cancelQueries({ queryKey: ['articles'] });
 
@@ -51,7 +51,9 @@ export const useCreateArticleMutation = () => {
     },
     onSuccess: (data: ArticleType, _, context: CreateArticleMutationContext) => {
       queryClient.setQueryData<PaginationType<ArticleType>>(['articles'], (old) => {
-        if (!old) return old;
+        if (!old) {
+          return old;
+        }
 
         return {
           ...old,
@@ -67,4 +69,4 @@ export const useCreateArticleMutation = () => {
       });
     },
   });
-};
+}

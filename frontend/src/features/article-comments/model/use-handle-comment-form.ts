@@ -1,7 +1,7 @@
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useAddCommentMutation } from './use-add-comment-mutation';
 
-export const useHandleCommentForm = (articleId: number) => {
+export function useHandleCommentForm(articleId: number) {
   const [author, setAuthor] = useState('');
   const [content, setContent] = useState('');
   const addCommentMutation = useAddCommentMutation(articleId);
@@ -30,7 +30,7 @@ export const useHandleCommentForm = (articleId: number) => {
       }
 
       addCommentMutation.mutate(
-        { author_name: author, content: content },
+        { author_name: author, content },
         { onSuccess: () => resetForm() },
       );
     },
@@ -48,4 +48,4 @@ export const useHandleCommentForm = (articleId: number) => {
     },
     handleSubmitForm,
   };
-};
+}
