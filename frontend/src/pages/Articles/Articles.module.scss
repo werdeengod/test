@@ -1,0 +1,41 @@
+@use '@/app/styles/helpers' as *;
+
+.articles {
+  @include flex(column, flex-start, center);
+  gap: 30px;
+
+  &__block {
+    margin-top: 50px;
+  }
+
+  &__title {
+    margin-bottom: 15px;
+  }
+}
+
+.article {
+  @include flex(column);
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  gap: 5px;
+  box-shadow: 0px 0px 10px 0px var(--secondary-gray);
+  border-radius: 15px;
+  border: 1px solid #ffffff;
+
+  &:hover {
+    color: var(--primary-color-hover);
+    border: 1px solid var(--primary-gray);
+    box-shadow: none;
+  }
+
+  &__header {
+    @include flex(row, space-between);
+    margin-bottom: 10px;
+  }
+
+  &__form {
+    @include flex(column);
+    gap: 20px;
+  }
+}

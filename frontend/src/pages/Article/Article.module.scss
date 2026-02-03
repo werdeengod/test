@@ -1,0 +1,81 @@
+@use '@/app/styles/helpers' as *;
+
+.article {
+  width: 100%;
+  @include flex(column);
+  gap: 10px;
+
+  &__header {
+    @include flex(row, flex-start);
+    flex-wrap: nowrap;
+    gap: 15px;
+    margin-bottom: 10px;
+
+    a {
+      @include flex(row, center, center);
+    }
+  }
+}
+
+.comments {
+  @include flex(column);
+  gap: 30px;
+}
+
+.comment {
+  @include flex(column);
+  gap: 5px;
+
+  &__separator {
+    border-top: 1px solid var(--secondary-gray);
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+
+  &__header {
+    @include flex(row, space-between);
+  }
+
+  &__form {
+    margin: 10px 0;
+    @include flex();
+    gap: 20px;
+
+    &__input__content {
+      flex: 1;
+      min-width: 0;
+
+      @include mobile {
+        width: 100%;
+        flex: none;
+        min-width: none;
+      }
+    }
+
+    &__input__author {
+      flex: 0 0 30%;
+      min-width: 0;
+
+      @include mobile {
+        width: 100%;
+        flex: none;
+        min-width: none;
+      }
+    }
+
+    button {
+      margin-top: auto;
+    }
+  }
+
+  &__title {
+    margin-bottom: 10px;
+    margin-top: 40px;
+  }
+
+  &__text {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-all;
+  }
+}

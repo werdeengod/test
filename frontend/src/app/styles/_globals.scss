@@ -1,0 +1,93 @@
+@use '@/app/styles/helpers' as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  line-height: 1.5;
+  transition: 0.1s all ease-in-out;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+button,
+input,
+textarea {
+  outline: none;
+  border: none;
+}
+
+h2 {
+  text-align: center;
+}
+
+body {
+  margin-top: 50px;
+}
+
+.container {
+  max-width: toRem(600);
+  padding: 5px 10px;
+  margin: 0 auto;
+}
+
+.btn {
+  display: block;
+  padding: 10px;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+  max-width: toRem(250);
+
+  @include mobile {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+.btn-purple {
+  background-color: var(--primary-color);
+  color: #ffffff;
+
+  &:hover {
+    background-color: var(--primary-color-hover);
+  }
+}
+
+.text_grey {
+  color: var(--primary-gray);
+}
+
+.form-input {
+  padding: 0 20px;
+  border: 1px solid var(--secondary-gray);
+  border-radius: 15px;
+  height: toRem(40);
+  width: 100%;
+  font-size: 14px;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.form-text {
+  border-radius: 15px;
+  padding: 12px;
+  resize: vertical;
+  border: 1px solid var(--secondary-gray) !important;
+  min-height: toRem(100);
+  max-height: toRem(500);
+}
+
+.content {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.form__section {
+  @include flex(column);
+  gap: 5px;
+}

@@ -1,0 +1,30 @@
+@use './functions' as *;
+
+$desktop: 1440;
+$laptop: 1280;
+$tablet: 1024;
+$mobile: 768;
+
+@mixin desktop {
+  @media (width <= toRem($desktop)) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (width <= toRem($laptop)) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (width <= toRem($tablet)) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (width <= toRem($mobile)) {
+    @content;
+  }
+}
